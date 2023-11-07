@@ -1,3 +1,9 @@
+function startGame () {
+    chosenImage = shapes._pickRandom()
+    chosenImage.showImage(0)
+    x = 2
+    y = 2
+}
 input.onButtonPressed(Button.A, function () {
     if (x > 0) {
         led.unplot(x, y)
@@ -15,9 +21,7 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 input.onGesture(Gesture.Shake, function () {
-    led.unplot(x, y)
-    x = 2
-    y = 2
+    startGame()
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     led.unplot(x, y)
@@ -29,9 +33,22 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
 })
 let y = 0
 let x = 0
-basic.showNumber(6)
-x = 2
-y = 2
+let chosenImage: Image = null
+let shapes: Image[] = []
+shapes = [
+images.iconImage(IconNames.Heart),
+images.iconImage(IconNames.Happy),
+images.iconImage(IconNames.Ghost),
+images.iconImage(IconNames.Snake),
+images.iconImage(IconNames.Giraffe),
+images.iconImage(IconNames.EighthNote),
+images.iconImage(IconNames.SmallSquare),
+images.iconImage(IconNames.Rollerskate),
+images.iconImage(IconNames.Triangle),
+images.iconImage(IconNames.Surprised),
+images.iconImage(IconNames.Chessboard)
+]
+startGame()
 basic.forever(function () {
     led.plot(x, y)
 })
